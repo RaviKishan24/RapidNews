@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-    baseURL: 'https://newsapi.org/v2',
+    baseURL: '/',
     timeout: 5000 //5sec
 });
 
