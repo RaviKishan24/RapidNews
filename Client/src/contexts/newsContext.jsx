@@ -10,22 +10,19 @@ export const NewsContextProvider = ({ children }) => {
 
 
     const fetchNews = async (url) => {
-
-        setLoading(true); // after function call loading true ( loding is true untill data is not fetched or fails);
+        setLoading(true);
         try {
-            const Resonse = await axiosInstance.get(`${url}&apiKey=${import.meta.env.VITE_NEWS_API_KEY}`);
-            const newsWithImg = Resonse.data.articles.filter(item => item.urlToImage);
+            const response = await axiosInstance.get(`/api/news?url=${encodeURIComponent(url)}`);
+            const newsWithImg = response.data.articles.filter( item => item.urlToImage );
             return newsWithImg;
         } catch (error) {
-
             console.log(error);
             return [];
         } finally {
-            setLoading(false); //finally runs whether the request succeeds or fails.
+            setLoading(false);
         }
+    };
 
-
-    }
     const value = {
         news,
         setNews,
