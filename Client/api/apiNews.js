@@ -1,8 +1,10 @@
 export default async function handler(req, res) {
     try {
-        const { url } = req.query;
 
-        const response = await fetch(  `https://newsapi.org/v2${url}&apiKey=${process.env.NEWS_API_KEY}` );
+        const { url } = req.query;
+        url = decodeURIComponent(url);
+
+        const response = await fetch(`https://newsapi.org/v2${url}&apiKey=${process.env.NEWS_API_KEY}` );
 
         const data = await response.json();
 

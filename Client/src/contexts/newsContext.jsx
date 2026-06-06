@@ -12,7 +12,7 @@ export const NewsContextProvider = ({ children }) => {
     const fetchNews = async (url) => {
         setLoading(true);
         try {
-            const response = await axiosInstance.get(`/api/news?url=${encodeURIComponent(url)}`);
+            const response = await axiosInstance.get(`/api/news?url=${url}`)
             const newsWithImg = (response.data.articles || []).filter(item => item.urlToImage);
             return newsWithImg;
         } catch (error) {
