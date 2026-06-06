@@ -8,7 +8,7 @@ function News({ className = "" }) {
 
     useEffect(() => {
         (async () => {
-            const data = await fetchNews(`/everything?q=india&pageSize=100`);
+            const data = await fetchNews(`/everything?q=india`);
             if (data) {
                 setNews(data);
             }
